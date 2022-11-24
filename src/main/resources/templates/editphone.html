@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Edit phone</h1>
+	<div>
+	<!-- Puhelimen muokkaus sivusto -->
+	<form th:object="${editphone}" th:action="@{/save}" action="#" method="post">
+		  	<input type="hidden" id="id" th:field="*{id}" />
+		  	<div>
+		  	<label>Make</label>
+			<input type="text" th:field="*{make}" />
+			</div>
+			<div>
+		  	<label>Model</label>
+		  	<input type="text" th:field="*{model}" />
+			</div>
+			<div>
+		  	<label>Capacity</label>
+			<input type="text" th:field="*{capacity}" />
+			</div>
+			<div>
+		  	<label>Year</label>
+			<input type="text" th:field="*{makeYear}" />
+			</div>
+			<div>			
+		  	<label>Price</label>
+			<input type="number" th:field="*{price}" />			
+			</div>
+			<br>
+		  	<label>Condition</label>
+			 <select id="conditions" th:field="*{condition}">
+       			<option th:each="condition: ${conditions}" th:value="${condition.conditionid}" th:text="${condition.name}"></option>
+    		</select>	
+			
+			<input type="submit" value="Save"></input>
+		</form>
+	
+	</div>
+
+ 	
+</body>
+</html>
