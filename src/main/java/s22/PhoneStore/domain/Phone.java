@@ -22,8 +22,8 @@ public class Phone {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="conditionid")
-	private Condition condition;
+	@JoinColumn(name="coonditionid")
+	private Coondition coondition;
 	
 	
 	public Phone() {
@@ -32,7 +32,7 @@ public class Phone {
 	}
 
 
-	public Phone(Long id, String make, String model, String capacity, int makeYear, double price, Condition condition) {
+	public Phone(Long id, String make, String model, String capacity, int makeYear, double price, Coondition coondition) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -40,7 +40,7 @@ public class Phone {
 		this.capacity = capacity;
 		this.makeYear = makeYear;
 		this.price = price;
-		this.condition = condition;
+		this.coondition = coondition;
 	}
 
 
@@ -104,20 +104,20 @@ public class Phone {
 	}
 
 
-	public Condition getCondition() {
-		return condition;
+	public Coondition getCoondition() {
+		return coondition;
 	}
 
 
-	public void setCondition(Condition condition) {
-		this.condition = condition;
+	public void setCoondition(Coondition coondition) {
+		this.coondition = coondition;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Phone [id=" + id + ", make=" + make + ", model=" + model + ", capacity=" + capacity + ", makeYear="
-				+ makeYear + ", price=" + price + ", condition=" + condition + "]";
+				+ makeYear + ", price=" + price + ", coondition=" + coondition + "]";
 	}
 	
 	

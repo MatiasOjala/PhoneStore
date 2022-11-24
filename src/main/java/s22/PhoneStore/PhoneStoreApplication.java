@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import s22.PhoneStore.domain.ApplicationUser;
 import s22.PhoneStore.domain.ApplicationUserRepository;
-import s22.PhoneStore.domain.Condition;
-import s22.PhoneStore.domain.ConditionRepository;
+import s22.PhoneStore.domain.Coondition;
+import s22.PhoneStore.domain.CoonditionRepository;
 import s22.PhoneStore.domain.Phone;
 import s22.PhoneStore.domain.PhoneRepository;
 
@@ -23,7 +23,7 @@ public class PhoneStoreApplication {
 private static final Logger Log = LoggerFactory.getLogger(PhoneStoreApplication.class);
 	
 	@Autowired
-	ConditionRepository condRepository;
+	CoonditionRepository condRepository;
 	
 	@Autowired
 	PhoneRepository phoneRepository;
@@ -35,7 +35,7 @@ private static final Logger Log = LoggerFactory.getLogger(PhoneStoreApplication.
 		SpringApplication.run(PhoneStoreApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner phonestoreDemo(PhoneRepository phoneRepository) {
+	public CommandLineRunner phonestore(PhoneRepository phoneRepository) {
 		return (args) -> {
 			
 			// Määritetään käyttäjät.
@@ -45,15 +45,22 @@ private static final Logger Log = LoggerFactory.getLogger(PhoneStoreApplication.
 			auRepository.save(new ApplicationUser("Saitam", "Alajo", "ADMIN", "admin", 
 					"$2a$10$ng6O4VyeXpWG12/WkA7AI.d.AsINXpIgJLd3PG1k9VIeR0OQbsB6G"));
 			
-			// Määritetään muutama kunto tasoa.
-			Log.info("Few conditons for Phones");
-			condRepository.save(new Condition("Excellent"));
-			condRepository.save(new Condition("OK"));
-			condRepository.save(new Condition("Bad"));
+			// Määritetään hieman kunto tasoa.
+			Log.info("save a few coonditons for phones");
+			condRepository.save(new Coondition("Excellent"));
+			condRepository.save(new Coondition("OK"));
+			condRepository.save(new Coondition("Bad"));
+			condRepository.save(new Coondition("Average"));
+			condRepository.save(new Coondition("Above average"));
+			condRepository.save(new Coondition("Below average"));
 			
-			// Määritetään pari testi puhelinta.
-			phoneRepository.save(new Phone(null, "iPhone", "13 Pro", "128gb", 2021, 1000, condRepository.findByName("Excellent").get(0)));
-			phoneRepository.save(new Phone(null, "Samsung", "Galaxy S10", "64gb", 2020, 600, condRepository.findByName("Bad").get(0)));
+			// Määritetään hieman testi puhelinta.
+			phoneRepository.save(new Phone(null, "iPhone", "13 Pro", "256gb", 2021, 1000, condRepository.findByName("Excellent").get(0)));
+			phoneRepository.save(new Phone(null, "iPhone", "12 Pro", "128gb", 2020, 700, condRepository.findByName("OK").get(0)));
+			phoneRepository.save(new Phone(null, "iPhone", "11", "64gb", 2019, 350, condRepository.findByName("Bad").get(0)));
+			phoneRepository.save(new Phone(null, "Samsung", "Galaxy S10", "64gb", 2020, 600, condRepository.findByName("Average").get(0)));
+			phoneRepository.save(new Phone(null, "Samsung", "Galaxy S10+", "64gb", 2020, 900, condRepository.findByName("Excellent").get(0)));
+			phoneRepository.save(new Phone(null, "Samsung", "Galaxy S9", "64gb", 2017, 400, condRepository.findByName("Below average").get(0)));
 			
 			// Haetaan kaikki puhelimet.
 			Log.info("fetch all phones");

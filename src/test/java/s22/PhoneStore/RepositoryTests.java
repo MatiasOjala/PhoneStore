@@ -6,13 +6,15 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import s22.PhoneStore.domain.Condition;
+import s22.PhoneStore.domain.Coondition;
 import s22.PhoneStore.domain.Phone;
 import s22.PhoneStore.domain.PhoneRepository;
 
 @DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class RepositoryTests {
 
 	@Autowired
@@ -29,10 +31,10 @@ class RepositoryTests {
 		// Haetaan teityn puhelimen kunto
 		// Tiedetään puhelimen Id ja kunto
 		
-		Condition condition = phoneRepository.findById((long) 1).get().getCondition();
-		System.out.println("Haetaan id:llä 1 " + condition);
+		Coondition coondition = phoneRepository.findById((long) 1).get().getCoondition();
+		System.out.println("Haetaan id:llä 1 " + coondition);
 		// Testataan että haku toimii oikein.
-		assertEquals(condition.getName(), "Excellent");
+		assertEquals(coondition.getName(), "Excellent");
 		
 	}
 	@Test

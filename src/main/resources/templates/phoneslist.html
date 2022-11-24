@@ -4,10 +4,12 @@ xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>List of Phones</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+
 </head>
 <body>
 	
-   <table>
+   <table class="table table-hover">
    	<tr>
    	<!-- Näkyvät tietojen pohjat. -->
    			<th>Make</th>
@@ -24,17 +26,18 @@ xmlns:th="http://www.thymeleaf.org">
             <td th:text="${phone.capacity}"></td>
             <td th:text="${phone.makeYear}"></td>
             <td th:text="${phone.price}"></td>
-            <td th:text="${phone.condition.name}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${phone.id})}">Edit</a></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${phone.id})}">Delete</a></td>
+            <td th:text="${phone.coondition.name}"></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${phone.id})}" class="btn btn-primary">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${phone.id})}" class="btn btn-danger">Delete</a></td>
         </tr>
     </table>
 <br>
 <!-- Palauttaa puhelimen lisäys välilehdelle -->
-<a href="/add" class="btn btn-primary">Add phone</a>
+<td>Condition of each phone comes from the looks of the phone and condition of the battery and other components</td><br><br>
+<a href="/add" class="btn btn-primary">Add phone</a> <td>Want to list your phone? (Currently only for ADMIN users!)</td>
 <br>
 <br>
 <!-- Palauttaa pääsivulle -->
-<a href="/mainpage" class="btn btn-primary">Main page</a>
+<a href="/mainpage" class="btn btn-primary">Main page</a> <td>Takes you back to our main page.</td>
 </body>
 </html>

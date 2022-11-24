@@ -11,42 +11,43 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+// Minun täytyi muuttaa Condition -> Coonditioniksi, sillä oli ilmeisesti kielletty sana. Ainakaan SQL ei tykännyt.
 
 @Entity
-public class Condition {
+public class Coondition {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long conditionid;
+	private Long coonditionid;
 	private String name;
 	// Tiedot puhelimen kunnosta ja kunnon "nimi"
 	
 	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy ="condition")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="coondition")
 	private List<Phone> phones;
 	
 	
-	public Condition() {
+	public Coondition() {
 		
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Condition(String name) {
+	public Coondition(String name) {
 		super();
 		this.name = name;
 	}
 
 
-	public Long getConditionid() {
-		return conditionid;
+	public Long getCoonditionid() {
+		return coonditionid;
 	}
 
 
-	public void setConditionid(Long conditionid) {
-		this.conditionid = conditionid;
+	public void setCoonditionid(Long coonditionid) {
+		this.coonditionid = coonditionid;
 	}
 
 
@@ -72,7 +73,7 @@ public class Condition {
 
 	@Override
 	public String toString() {
-		return "Condition [conditionid=" + conditionid + ", name=" + name + "]";
+		return "Coondition [coonditionid=" + coonditionid + ", name=" + name + "]";
 	}
 	
 

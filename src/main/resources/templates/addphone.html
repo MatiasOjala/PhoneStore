@@ -3,6 +3,8 @@
 <head>
     <title>New Phone</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+    
 </head>
 <body>
 	<h1>Insert new phone information</h1>
@@ -11,32 +13,32 @@
 	<form th:object="${phone}" th:action="@{save}" action="#" method="post">
 
 		  	<div>
-		  	<label>Make</label>
-			<input type="text" th:field="*{make}" />
+		  	<label>Make: </label>
+			<input type="text" class="form-control" th:field="*{make}" />
 			</div>
 			<div>
-		  	<label>Model</label>
-		  	<input type="text" th:field="*{model}" />
+		  	<label>Model: </label>
+		  	<input type="text" class="form-control" th:field="*{model}" />
 			</div>
 			<div>
-		  	<label>Capacity</label>
-			<input type="text" th:field="*{capacity}" />
+		  	<label>Capacity: </label>
+			<input type="text" class="form-control" th:field="*{capacity}" />
 			</div>
 			<div>
-		  	<label>Year</label>
-			<input type="text" th:field="*{makeYear}" />
+		  	<label>Year: </label>
+			<input type="text" class="form-control" th:field="*{makeYear}" />
 			</div>
 			<div>		
-		  	<label>Price</label>
-			<input type="text" th:field="*{price}" />
+		  	<label>Price: </label>
+			<input type="text" class="form-control" th:field="*{price}" />
 			</div>
 			<br>
-		  	<label>Condition</label>
-			 <select id="conditions" th:field="*{condition}">
-       			<option th:each="condition: ${conditions}" th:value="${condition.conditionid}" th:text="${condition.name}"></option>
+		  	<label>Condition: </label>
+			 <select id="coonditions"  th:field="*{coondition}">
+       			<option th:each="coondition: ${coonditions}" th:value="${coondition.coonditionid}" th:text="${coondition.name}"></option>
     		</select>	
-			
-			<input type="submit" value="Save"></input>
+			<br><br>
+			<input type="submit" class="btn btn-primary" value="Save"></input>
 		</form>
 	
 	</div>
